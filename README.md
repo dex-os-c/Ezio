@@ -64,6 +64,25 @@ ezio status
 
 Full pipeline behavior, timeouts, recovery, and data flow are documented in [Architecture](docs/architecture.md).
 
+```mermaid
+flowchart LR
+    Q[Query] --> R[LLM refine]
+    R --> C[Collect\nTor · paste · code forges · RSS · seeds · plugins]
+    C --> F[Filter]
+    F --> S[Fetch via Tor]
+    S --> E[Extract entities\nregex · NER · LLM]
+    E --> N[Enrich\nreputation · breach · DNS · blockchain · plugins]
+    N --> G[Graph\nrelationships · communities · clusters]
+    G --> X[Export\nSTIX · MISP · Sigma · YARA · CSV · MD · JSON]
+
+    subgraph Persistent workspace
+        DB[(SQLite / PostgreSQL)]
+    end
+    E -.-> DB
+    G -.-> DB
+    DB -.-> W[Web UI\ndashboard · graph · timeline · monitors]
+```
+
 ## Entity Types
 
 | Category | Examples |
@@ -147,6 +166,7 @@ Run the full PostgreSQL, Tor, FastAPI, and Next.js stack with Docker Compose. Th
 |-|-|
 | [Self-hosting guide](docs/self-hosting.md) | Docker Compose, environment setup, operations, and troubleshooting |
 | [Architecture](docs/architecture.md) | Pipeline internals, modules, schema, API, enrichment, graph, and configuration reference |
+| [Plugins](docs/plugins.md) | Write custom collectors/enrichers without touching core files |
 | [Contributing](CONTRIBUTING.md) | Development setup, standards, and pull requests |
 | [Security](SECURITY.md) | Supported versions and private vulnerability reporting |
 | [Usage policy](docs/USAGE_POLICY.md) | Authorized-use requirements and prohibited activity |

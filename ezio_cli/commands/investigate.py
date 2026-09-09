@@ -645,6 +645,24 @@ async def _run_investigation(
         _safe(_telegram, "Telegram", "telegram"),
     )
     paste_pages, github_pages, gitlab_pages, rss_pages, onion_pages, telegram_pages = side_tasks
+
+    # Plugin collectors (additive) — anything registered in ~/.ezio/plugins/
+    # runs through the exact same _safe() wrapper as the built-in sources
+    # above, so a broken or slow plugin degrades to "0 results" instead of
+    # failing the investigation. Built-in sources are completely unaffected.
+    from plugins.registry import get_collectors
+
+    plugin_collectors = get_collectors()
+    plugin_pages: list[dict] = []
+    if plugin_collectors:
+        plugin_results = await asyncio.gather(
+            *(
+                _safe(lambda fn=fn: fn(refined), f"plugin:{name}", f"plugin:{name}")
+                for name, fn in plugin_collectors.items()
+            )
+        )
+        for pages in plugin_results:
+            plugin_pages.extend(pages or [])
     for onion in onion_pages:
         search_links.append({
             "link": onion.get("url", ""),
@@ -736,7 +754,7 @@ async def _run_investigation(
     # source pages are scored separately before they reach the merge below.
     clearnet_pages = [
         page
-        for extra in (paste_pages, github_pages, gitlab_pages, rss_pages)
+        for extra in (paste_pages, github_pages, gitlab_pages, rss_pages, plugin_pages)
         for page in extra
     ]
     filtered_clearnet_pages = await asyncio.to_thread(
@@ -936,6 +954,26 @@ async def _run_investigation(
         await enrich_ip_entities(extraction_results, investigation_id=inv_uuid)
     except Exception as ip_exc:
         logger.debug("ip_reputation skipped: %s", ip_exc)
+
+    # Plugin enrichers (additive) — each returns page-shaped records folded
+    # into enrichment_pages via the same manifest path as OTX/NVD/ransomlook,
+    # so plugin findings get persisted and re-extracted identically. A
+    # raising plugin is logged and skipped; it never fails the investigation.
+    from plugins.registry import get_enrichers
+
+    plugin_enrichers = get_enrichers()
+    if plugin_enrichers:
+        entity_dicts = sqlite_adapter.get_entities(investigation_id)
+        for plugin_name, enrich_fn in plugin_enrichers.items():
+            try:
+                plugin_pages_out = await enrich_fn(refined, entity_dicts) or []
+                for page in plugin_pages_out:
+                    page.setdefault("source", f"plugin:{plugin_name}")
+                enrichment_pages.extend(plugin_pages_out)
+                sources_used[f"plugin:{plugin_name}"] = {"status": "ok", "count": len(plugin_pages_out)}
+            except Exception as exc:
+                logger.warning("Plugin enricher '%s' failed: %s — skipping", plugin_name, exc)
+                sources_used[f"plugin:{plugin_name}"] = {"status": "fail", "error": str(exc)}
 
     # --- Step 6.2–6.4 — domain / hash / email (before graph) -------------
     # Phase 6.2 — per-step timeouts so a hung reputation source doesn't
