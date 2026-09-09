@@ -1,0 +1,202 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ezio"
+version = "2.0.3"
+description = "Dark web OSINT CLI — automated threat intelligence from query to report"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [{ name = "Ezio" }]
+keywords = ["osint", "darkweb", "threat-intelligence", "tor", "cli"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Information Technology",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security",
+]
+dependencies = [
+    "typer==0.24.1",
+    "rich==15.0.0",
+    "textual==8.2.7",
+    "click==8.3.2",
+    "fastapi==0.136.0",
+    "aiohttp==3.13.5",
+    "aiohttp-socks==0.11.0",
+    "alembic==1.18.4",
+    "apscheduler==3.11.2",
+    "pillow==12.2.0",
+    "sqlalchemy[asyncio]==2.0.49",
+    "aiosqlite==0.22.1",
+    "filelock==3.29.0",
+    "numpy==2.2.6",
+    "langchain==0.3.25",
+    "langchain-openai==0.3.19",
+    "langchain-anthropic==0.3.22",
+    "langchain-google-genai==2.1.12",
+    "langchain-groq==0.3.8",
+    "langchain-ollama==0.3.10",
+    "python-dotenv==1.2.2",
+    "httpx==0.28.1",
+    "spacy==3.8.14",
+    "beautifulsoup4==4.14.3",
+    "feedparser==6.0.11",
+    "networkx==3.4.2",
+    "pydantic==2.13.3",
+    "python-jose[cryptography]==3.5.0",
+    "passlib[bcrypt]==1.7.4",
+    "bcrypt>=3.1.0,<4.1",
+    "slowapi==0.1.9",
+    "redis==7.4.0",
+    "pyyaml==6.0.3",
+    "openai==1.109.1",
+    "cryptography==46.0.7",
+    "python-dateutil==2.9.0.post0",
+    "langdetect==1.0.9",
+    "pyvis==0.3.2",
+    "urllib3==2.6.3",
+    "trafilatura==2.0.0",
+    "lxml_html_clean>=0.4.2",
+    "requests==2.33.1",
+    "python-socks[asyncio]==2.8.1",
+    "tldextract==5.3.1",
+    "stix2==3.0.2",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-asyncio", "aioresponses>=0.7.6"]
+nlp = [
+    "sentence-transformers>=3.0",
+    "torch>=2.3",
+    "transformers>=4.42",
+]
+vector = [
+    "chromadb>=0.5",
+    "sentence-transformers>=3.0",
+    "torch>=2.3",
+]
+telegram = ["telethon>=1.36"]
+js = ["playwright>=1.45"]
+# Convenience: all optional packages at once
+all = [
+    "chromadb>=0.5",
+    "playwright>=1.45",
+    "sentence-transformers>=3.0",
+    "telethon>=1.36",
+    "torch>=2.3",
+    "transformers>=4.42",
+]
+
+[project.scripts]
+ezio = "ezio_cli.main:run"
+
+[tool.setuptools]
+py-modules = ["config"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = [
+    "ezio_cli*",
+    "db*",
+    "sources*",
+    "sources.data*",
+    "extractor*",
+    "scraper*",
+    "search*",
+    "utils*",
+    "export*",
+    "analysis*",
+    "fingerprint*",
+    "graph*",
+    "i18n*",
+    "vector*",
+    "monitor*",
+    "crawler*",
+    "pacing*",
+    "auth*",
+    "ezio*",
+    "api*",
+    "data*",
+]
+exclude = [
+    "tests*",
+    "web*",
+    "va_final_qa*",
+    "infra*",
+    "chroma_db*",
+    "cti_data*",
+    "docs*",
+    "scripts*",
+    "public*",
+    "__pycache__*",
+]
+
+# v1.6.3 — ship data/onion_seeds.json inside the installed package.
+# Without this entry, ``pip install ezio`` produces a package
+# directory that does NOT contain the curated seed list — every
+# CLI investigation silently gets zero seed injection, which is the
+# exact regression reported in v1.6.2 (every installed CLI logged
+# ``Seed file not found: .../site-packages/data/onion_seeds.json``).
+#
+# ``sources.data`` is declared as a sub-package above (its only file
+# is onion_seeds.json; __init__.py is empty) so importlib.resources
+# can locate it after pip install via
+# ``files('sources').joinpath('data', 'onion_seeds.json')``.  The
+# package-data entry below tells setuptools to ship the JSON inside
+# that sub-package directory.
+[tool.setuptools.package-data]
+"sources" = ["data/onion_seeds.json"]
+"sources.data" = ["onion_seeds.json"]
+
+# v2.0.2 — ship the top-level reference data bundle inside the installed
+# package.  The runtime resolves each of these via
+# ``os.path.dirname(os.path.dirname(__file__))/data`` (from extractor/ and
+# monitor/), i.e. ``site-packages/data/<file>`` after a wheel install.  The
+# ``data`` package (empty ``data/__init__.py``, declared in packages.find via
+# ``data*`` above) is the same data-dir-as-package mechanism that already ships
+# ``sources/data/onion_seeds.json``.  Without these entries a fresh
+# ``pip install ezio`` logs "Gazetteer snapshot not found" and
+# "Common-word list not found", silently degrading query expansion and
+# shape-checking to structural-signals-only.
+"data" = [
+    "threat_gazetteer.json",
+    "common_words_en.txt",
+    "domain_stopwords_en.txt",
+    "seed_data.json.gz",
+    "monitors.yaml",
+]
+
+# Alembic's runtime startup hook resolves its config relative to the installed
+# package root (the same root that contains api/ and db/ after wheel install).
+# Ship the config there so both `alembic upgrade head` and API startup
+# migrations work from a non-editable installation.
+[tool.setuptools.data-files]
+"." = ["alembic.ini"]
+
+[tool.ruff.lint.per-file-ignores]
+# These are legacy/optional-import cases audited in docs/ruff-triage.md.
+# Keep the exceptions file-scoped so new findings elsewhere remain visible.
+"analysis/opsec.py" = ["E741"]
+"api/auth.py" = ["E402", "E712"]
+"api/routes/auth.py" = ["E712"]
+"api/routes/investigations.py" = ["E402", "E712", "F821", "F841"]
+"auth/__init__.py" = ["F401"]
+"db/session.py" = ["F821"]
+"export/sigma.py" = ["E741"]
+"i18n/detect.py" = ["F401"]
+"search/__init__.py" = ["F401", "F841"]
+"search/search.py" = ["F841"]
+"sources/enrichment.py" = ["E741", "F811"]
+"sources/gitlab_scraper.py" = ["F841"]
+"vector/model_singleton.py" = ["F821"]
+"ezio/config.py" = ["F821"]
+"ezio/llm.py" = ["E402"]
+"ezio_cli/commands/configure.py" = ["F841"]
+"ezio_cli/commands/investigate.py" = ["F841"]
+"ezio_cli/main.py" = ["F841"]

@@ -1,0 +1,523 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-07-25",
+  "description": "Curated list of known dark web addresses for Ezio intelligence seeding",
+  "categories": {
+    "ransomware_leak_sites": {
+      "description": "Ransomware group data leak and negotiation sites",
+      "tags": [
+        "ransomware",
+        "leak",
+        "extortion",
+        "RaaS",
+        "victim"
+      ],
+      "seeds": [
+        {
+          "name": "LockBit 3.0 Leak Site",
+          "url": "http://lockbit7z2jwcskxpbokpemdxmltipntwlkmidcll2qirbu7ykg46eyd.onion",
+          "tags": [
+            "lockbit",
+            "ransomware",
+            "leak"
+          ],
+          "status": "unknown",
+          "added": "2024-01-01"
+        },
+        {
+          "name": "ALPHV/BlackCat Leak Site",
+          "url": "http://alphvmmm27o3abo3r2mlmjrpdmzle3rykajqc5xsj7j7ejksbpsa36ad.onion",
+          "tags": [
+            "alphv",
+            "blackcat",
+            "ransomware",
+            "leak"
+          ],
+          "status": "unknown",
+          "added": "2024-01-01"
+        },
+        {
+          "name": "RansomHub Leak Site",
+          "url": "http://ransomxifxwc5eteopdobynonjctkxxvap77yqifu2emfbecgbqdw6qd.onion",
+          "tags": [
+            "ransomhub",
+            "ransomware",
+            "leak"
+          ],
+          "status": "unknown",
+          "added": "2024-01-01"
+        },
+        {
+          "name": "Play Ransomware Leak Site",
+          "url": "http://mbrlkbtq5jonaqkuruhxxnczkewspki7l2zih2cizaejt7uplyxelsad.onion",
+          "tags": [
+            "play",
+            "ransomware",
+            "leak"
+          ],
+          "status": "unknown",
+          "added": "2024-01-01"
+        },
+        {
+          "name": "Cl0p Leak Site",
+          "url": "http://ekbgzchl6x2ias37.onion",
+          "tags": [
+            "clop",
+            "cl0p",
+            "ransomware",
+            "leak"
+          ],
+          "status": "unknown",
+          "added": "2024-01-01"
+        },
+        {
+          "name": "BlackBasta Leak Site",
+          "url": "http://stniiou4x4n7vkst.onion",
+          "tags": [
+            "blackbasta",
+            "ransomware",
+            "leak"
+          ],
+          "status": "unknown",
+          "added": "2024-01-01"
+        },
+        {
+          "name": "Akira Ransomware Leak Site",
+          "url": "http://akiral2iz6a7qgd3ayp3l6yub7xx7erostar5fk3mmfhq4jrm5sgv3id.onion",
+          "tags": [
+            "akira",
+            "ransomware",
+            "leak"
+          ],
+          "status": "unknown",
+          "added": "2024-01-01"
+        },
+        {
+          "name": "8Base Ransomware",
+          "url": "http://basemmnnq4ndtbzn.onion",
+          "tags": [
+            "8base",
+            "ransomware",
+            "leak"
+          ],
+          "status": "unknown",
+          "added": "2024-01-01"
+        },
+        {
+          "name": "Hunters International",
+          "url": "http://hunters55rdxciehoqzwv7vgyv6nt37tbwax2reroyzxhou7my5ejyid.onion",
+          "tags": [
+            "hunters",
+            "ransomware",
+            "leak"
+          ],
+          "status": "unknown",
+          "added": "2024-01-01"
+        },
+        {
+          "name": "NoEscape Ransomware",
+          "url": "http://noescape4yxmdn4nliuzrquf5k2mhddyxl2d2mhwwl7mv5kiqnxwuad.onion",
+          "tags": [
+            "noescape",
+            "ransomware",
+            "leak"
+          ],
+          "status": "unknown",
+          "added": "2024-01-01"
+        }
+      ]
+    },
+    "hacker_forums": {
+      "description": "Underground hacking and cybercrime forums",
+      "tags": [
+        "forum",
+        "hacking",
+        "cybercrime",
+        "exploit",
+        "malware",
+        "tools"
+      ],
+      "seeds": [
+        {
+          "name": "Exploit.in Mirror",
+          "url": "http://exploitivzcm5dawzhe6c32nrekcdcrjnisambwggfm26sf7bxkaicad.onion",
+          "tags": [
+            "exploit",
+            "forum",
+            "russian"
+          ],
+          "status": "unknown",
+          "added": "2024-01-01"
+        },
+        {
+          "name": "XSS.is Mirror",
+          "url": "http://xss4ctmechkr6gzm.onion",
+          "tags": [
+            "xss",
+            "forum",
+            "russian",
+            "exploit"
+          ],
+          "status": "unknown",
+          "added": "2024-01-01"
+        },
+        {
+          "name": "Ramp Forum",
+          "url": "http://ramp4u7vomefwf3n.onion",
+          "tags": [
+            "ramp",
+            "forum",
+            "russian",
+            "darknet"
+          ],
+          "status": "unknown",
+          "added": "2024-01-01"
+        },
+        {
+          "name": "HackTown",
+          "url": "http://hacktownpagdenbbi.onion",
+          "tags": [
+            "hacktown",
+            "forum",
+            "hacking"
+          ],
+          "status": "unknown",
+          "added": "2024-01-01"
+        },
+        {
+          "name": "Nulled Mirror",
+          "url": "http://nulledkp4oyc3p6j.onion",
+          "tags": [
+            "nulled",
+            "forum",
+            "cracking",
+            "leak"
+          ],
+          "status": "unknown",
+          "added": "2024-01-01"
+        }
+      ]
+    },
+    "carding_fraud": {
+      "description": "Carding, fraud, and financial crime forums and markets",
+      "tags": [
+        "carding",
+        "fraud",
+        "cc",
+        "dumps",
+        "financial",
+        "stolen"
+      ],
+      "seeds": [
+        {
+          "name": "Rescator Mirror",
+          "url": "http://rescatorzofpmygeex.onion",
+          "tags": [
+            "rescator",
+            "carding",
+            "dumps"
+          ],
+          "status": "unknown",
+          "added": "2024-01-01"
+        },
+        {
+          "name": "Joker's Stash Archive",
+          "url": "http://jstash4ys65773kw.onion",
+          "tags": [
+            "jokers",
+            "stash",
+            "carding"
+          ],
+          "status": "unknown",
+          "added": "2024-01-01"
+        },
+        {
+          "name": "BriansClub Mirror",
+          "url": "http://briansclubm3ld.onion",
+          "tags": [
+            "briansclub",
+            "carding",
+            "cc"
+          ],
+          "status": "unknown",
+          "added": "2024-01-01"
+        }
+      ]
+    },
+    "initial_access_brokers": {
+      "description": "Initial access broker marketplaces and shops",
+      "tags": [
+        "IAB",
+        "access",
+        "rdp",
+        "vpn",
+        "shell",
+        "initial access"
+      ],
+      "seeds": [
+        {
+          "name": "Genesis Market Archive",
+          "url": "http://genesiswyjnvzkmf.onion",
+          "tags": [
+            "genesis",
+            "stealer",
+            "logs",
+            "IAB"
+          ],
+          "status": "unknown",
+          "added": "2024-01-01"
+        },
+        {
+          "name": "Russian Market Mirror",
+          "url": "http://rsnmktfxigejvfk6.onion",
+          "tags": [
+            "russian market",
+            "logs",
+            "stealer",
+            "credentials"
+          ],
+          "status": "unknown",
+          "added": "2024-01-01"
+        }
+      ]
+    },
+    "malware_tools": {
+      "description": "Malware, exploit kits, and hacking tools markets",
+      "tags": [
+        "malware",
+        "rat",
+        "stealer",
+        "botnet",
+        "exploit kit",
+        "c2",
+        "cobalt strike"
+      ],
+      "seeds": [
+        {
+          "name": "MalwareBazaar Onion",
+          "url": "http://bazaar.abuse.ch.onion",
+          "tags": [
+            "malware",
+            "samples",
+            "abuse.ch"
+          ],
+          "status": "unknown",
+          "added": "2024-01-01"
+        },
+        {
+          "name": "VX Underground Mirror",
+          "url": "http://vxug7ouqq5lnh3am.onion",
+          "tags": [
+            "vxug",
+            "malware",
+            "samples",
+            "research"
+          ],
+          "status": "unknown",
+          "added": "2024-01-01"
+        }
+      ]
+    },
+    "search_and_indexes": {
+      "description": "Dark web search engines and directory indexes",
+      "tags": [
+        "search",
+        "index",
+        "directory"
+      ],
+      "seeds": [
+        {
+          "name": "Ahmia Search",
+          "url": "http://juhanurmihxlp77nkq76byazcldy2hlmovfu2epvl5ankdibsot4csyd.onion",
+          "tags": [
+            "search",
+            "ahmia",
+            "index"
+          ],
+          "status": "active",
+          "added": "2024-01-01"
+        },
+        {
+          "name": "Torch Search",
+          "url": "http://xmh57jrknzkhv6y3ls3ubitzfqnkrwxhopf5aygthi7d6rplyvk3noyd.onion",
+          "tags": [
+            "search",
+            "torch",
+            "index"
+          ],
+          "status": "unknown",
+          "added": "2024-01-01"
+        },
+        {
+          "name": "Haystack",
+          "url": "http://haystak5njsmn2hqkewecpaxetahtwhsbsa64jom2k22z5afxhnpxfid.onion",
+          "tags": [
+            "search",
+            "haystack",
+            "index"
+          ],
+          "status": "unknown",
+          "added": "2024-01-01"
+        },
+        {
+          "name": "OnionLand Search",
+          "url": "http://3bbad7fauom4d6sgppalyqddsqbf5u5p56b5k5uk2zxsy3d6ey2jobad.onion",
+          "tags": [
+            "search",
+            "onionland",
+            "index"
+          ],
+          "status": "unknown",
+          "added": "2024-01-01"
+        },
+        {
+          "name": "Dark.fail Directory",
+          "url": "http://darkfailenbsdla5mal2mxn2uz66od5vtzd5qozslagrfzachha3f3id.onion",
+          "tags": [
+            "directory",
+            "verified",
+            "links"
+          ],
+          "status": "active",
+          "added": "2024-01-01"
+        }
+      ]
+    },
+    "paste_and_leaks": {
+      "description": "Dark web paste sites and data leak repositories",
+      "tags": [
+        "paste",
+        "leak",
+        "dump",
+        "credentials",
+        "data"
+      ],
+      "seeds": [
+        {
+          "name": "ZeroBin Onion",
+          "url": "http://zerobinftagjpeeebbvyzalcnagdzqp4mn7dvlsb5bkfp775j4g7gkqd.onion",
+          "tags": [
+            "paste",
+            "zerobin",
+            "anonymous"
+          ],
+          "status": "unknown",
+          "added": "2024-01-01"
+        },
+        {
+          "name": "Stronghold Paste",
+          "url": "http://stronghold4ljtntyuoqr6kwkmlrjq57ldldwkdav4mm3kdfzqkmg3qd.onion",
+          "tags": [
+            "paste",
+            "leak",
+            "dump"
+          ],
+          "status": "unknown",
+          "added": "2024-01-01"
+        }
+      ]
+    },
+    "threat_intelligence": {
+      "description": "Dark web threat intelligence and security research resources",
+      "tags": [
+        "intel",
+        "security",
+        "research",
+        "CTI",
+        "IOC"
+      ],
+      "seeds": [
+        {
+          "name": "Intel Exchange",
+          "url": "http://rrcc5uuudhh4ez3c.onion",
+          "tags": [
+            "intel",
+            "exchange",
+            "CTI"
+          ],
+          "status": "unknown",
+          "added": "2024-01-01"
+        },
+        {
+          "name": "Onion Share",
+          "url": "http://lldan5gahapx5k7iafb3s4ikijc4ni7gx5iywdflkba5y2ezyg6sjgyd.onion",
+          "tags": [
+            "share",
+            "files",
+            "anonymous"
+          ],
+          "status": "unknown",
+          "added": "2024-01-01"
+        }
+      ]
+    },
+    "discovered": {
+      "description": "Auto-discovered during investigations",
+      "tags": [
+        "discovered"
+      ],
+      "seeds": [
+        {
+          "name": "dark3xolguutzr2cn5twjyu6c3db2z3a",
+          "url": "http://dark3xolguutzr2cn5twjyu6c3db2z3ai3aqyqascml5cdrleh3s2hqd.onion",
+          "tags": [],
+          "status": "discovered",
+          "added": "2026-07-07",
+          "source_url": "http://amndir7jfxnt5glt2tsevwjlnwdvknttxygubw27ulq5c433en75piyd.onion",
+          "investigation_id": "152ce839-6ffe-42da-be35-3b50cda2884e",
+          "added_at": "2026-07-07T09:53:07.647911+00:00"
+        },
+        {
+          "name": "anonhk3kz4eqqis7dncqolp6u366n44d",
+          "url": "http://anonhk3kz4eqqis7dncqolp6u366n44dz4l34byprdk7qv65hm2hgbyd.onion",
+          "tags": [],
+          "status": "discovered",
+          "added": "2026-07-07",
+          "source_url": "http://amndir7jfxnt5glt2tsevwjlnwdvknttxygubw27ulq5c433en75piyd.onion",
+          "investigation_id": "152ce839-6ffe-42da-be35-3b50cda2884e",
+          "added_at": "2026-07-07T09:53:07.652184+00:00"
+        },
+        {
+          "name": "pathfndw4o45qz6f62dyatb44ov3aivw",
+          "url": "http://pathfndw4o45qz6f62dyatb44ov3aivwo2ielpzzzlgwcpmvhufd7zyd.onion",
+          "tags": [],
+          "status": "discovered",
+          "added": "2026-07-07",
+          "source_url": "http://amndir7jfxnt5glt2tsevwjlnwdvknttxygubw27ulq5c433en75piyd.onion",
+          "investigation_id": "152ce839-6ffe-42da-be35-3b50cda2884e",
+          "added_at": "2026-07-07T09:53:07.673586+00:00"
+        },
+        {
+          "name": "stalkerusej477vjok7cezhcohyh6nis",
+          "url": "http://stalkerusej477vjok7cezhcohyh6nispledf7qypy76ai4q4z2ta7ad.onion",
+          "tags": [],
+          "status": "discovered",
+          "added": "2026-07-07",
+          "source_url": "http://amndir7jfxnt5glt2tsevwjlnwdvknttxygubw27ulq5c433en75piyd.onion",
+          "investigation_id": "152ce839-6ffe-42da-be35-3b50cda2884e",
+          "added_at": "2026-07-07T09:53:07.691759+00:00"
+        },
+        {
+          "name": "hn2paw7zaahbikbejiv6h22zwtijlam6",
+          "url": "http://hn2paw7zaahbikbejiv6h22zwtijlam65y2c77xj2ypbilm2xs4bnbid.onion",
+          "tags": [],
+          "status": "discovered",
+          "added": "2026-07-07",
+          "source_url": "http://hn2paw7zaahbikbejiv6h22zwtijlam65y2c77xj2ypbilm2xs4bnbid.onion",
+          "investigation_id": "312fb06d-a71c-453b-b108-4aff4997a4ac",
+          "added_at": "2026-07-07T10:15:11.791535+00:00"
+        },
+        {
+          "name": "tornetupfu7gcgidt33ftnungxzyfq2p",
+          "url": "http://tornetupfu7gcgidt33ftnungxzyfq2pygui5qdoyss34xbgx2qruzid.onion",
+          "tags": [],
+          "status": "discovered",
+          "added": "2026-07-25",
+          "source_url": "http://tornetupfu7gcgidt33ftnungxzyfq2pygui5qdoyss34xbgx2qruzid.onion",
+          "investigation_id": "94488e9f-236e-4cdd-a55e-285219f59dc0",
+          "added_at": "2026-07-25T17:08:29.364410+00:00"
+        }
+      ]
+    }
+  }
+}

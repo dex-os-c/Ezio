@@ -1,0 +1,129 @@
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:16-alpine
+    container_name: ezio-postgres
+    environment:
+      POSTGRES_USER: ezio
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ezio
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ezio -d ezio"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - ezio-net
+
+  # Tor Proxy (local Dockerfile — includes python3 for healthcheck)
+  tor:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.tor
+    container_name: ezio-tor
+    ports:
+      - "9050:9050"
+      # Destination-isolated SocksPort used by the Playwright renderer — see
+      # docker/Dockerfile.tor for why that path needs its own port.
+      - "9250:9250"
+    volumes:
+      - tor_data:/var/lib/tor
+    healthcheck:
+      test: ["CMD", "python", "-c", "import socket; s=socket.socket(); s.settimeout(5); s.connect(('127.0.0.1', 9050)); s.close()"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    networks:
+      - ezio-net
+
+  # FastAPI Backend (uses root Dockerfile with multi-stage build)
+  fastapi:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.fastapi
+      args:
+        OTX_API_KEY: ${OTX_API_KEY}
+        ABUSECH_API_KEY: ${ABUSECH_API_KEY}
+        BLOCKCYPHER_TOKEN: ${BLOCKCYPHER_TOKEN}
+        ETHERSCAN_API_KEY: ${ETHERSCAN_API_KEY}
+        PLAYWRIGHT_ENABLED: ${PLAYWRIGHT_ENABLED:-false}
+        GPU: ${GPU:-false}
+    container_name: ezio-fastapi
+    # depends_on only affects RUNTIME (not build), allowing parallel builds
+    depends_on:
+      postgres:
+        condition: service_healthy
+      tor:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://ezio:${POSTGRES_PASSWORD}@postgres:5432/ezio
+      TOR_PROXY_HOST: tor
+      TOR_PROXY_PORT: 9050
+      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY}
+      OPENROUTER_BASE_URL: ${OPENROUTER_BASE_URL:-https://openrouter.ai/api/v1}
+      OTX_API_KEY: ${OTX_API_KEY}
+      ABUSECH_API_KEY: ${ABUSECH_API_KEY}
+      BLOCKCYPHER_TOKEN: ${BLOCKCYPHER_TOKEN}
+      ETHERSCAN_API_KEY: ${ETHERSCAN_API_KEY}
+      PYTHONUNBUFFERED: 1
+      CORS_ORIGINS: "http://localhost:3000,http://127.0.0.1:3000,http://localhost:3001,http://127.0.0.1:3001"
+      TF_ENABLE_ONEDNN_OPTS: 0
+      TF_CPP_MIN_LOG_LEVEL: 3
+      JWT_SECRET: ${JWT_SECRET}
+      PLAYWRIGHT_ENABLED: ${PLAYWRIGHT_ENABLED:-false}
+      DEEPL_API_KEY: ${DEEPL_API_KEY}
+      I18N_LANGUAGES: ${I18N_LANGUAGES:-en,ru,zh}
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+      - chroma_data:/app/chroma_db
+      - monitors_data:/app/data
+    networks:
+      - ezio-net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      # Seed import runs in the background (see docker/docker-entrypoint.sh),
+      # so uvicorn typically boots in ~30s. The generous start_period accounts
+      # for slow VMs / disks / first-time pip cache misses on restart.
+      interval: 10s
+      timeout: 5s
+      start_period: 240s
+      retries: 5
+
+  # Next.js Frontend
+  nextjs:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.nextjs
+    container_name: ezio-nextjs
+    depends_on:
+      # Only needed during runtime, NOT for build
+      fastapi:
+        condition: service_healthy
+    environment:
+      NEXT_PUBLIC_API_URL: http://fastapi:8000
+      JWT_SECRET: ${JWT_SECRET}
+    ports:
+      - "3001:3000"
+    networks:
+      - ezio-net
+
+volumes:
+  postgres_data:
+    driver: local
+  chroma_data:
+    driver: local
+  monitors_data:
+    driver: local
+  tor_data:
+    driver: local
+
+networks:
+  ezio-net:
+    driver: bridge

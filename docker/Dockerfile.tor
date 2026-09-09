@@ -1,0 +1,37 @@
+FROM alpine:latest
+
+# Install Tor, curl, and python3 (for TCP socket healthcheck in docker-compose)
+RUN apk add --no-cache tor curl python3 \
+    && ln -sf /usr/bin/python3 /usr/bin/python
+
+# Expose SOCKS5 ports: 9050 general, 9250 destination-isolated (see below)
+EXPOSE 9050 9250
+
+# Run Tor as the tor user
+USER tor
+
+# Two SocksPorts, because the two clients need isolation delivered differently.
+#
+#   9050  Stock port.  `IsolateSOCKSAuth` is on by default here, which is what
+#         every aiohttp caller relies on: scraper/tor_pool.py hands each target
+#         hostname its own SOCKS username/password, and Tor gives each distinct
+#         credential its own circuit.
+#
+#   9250  `IsolateDestAddr IsolateDestPort` — Tor itself keys circuits on the
+#         destination rather than on a credential.  This port exists for the
+#         Playwright renderer, which CANNOT use the credential mechanism at all:
+#         its driver rejects SOCKS5 proxy credentials outright
+#         ("Browser does not support socks5 proxy authentication", thrown from
+#         playwright's browserContext.js for any socks5:// URL carrying a
+#         username or password — at launch AND at context creation, so no
+#         amount of restructuring the browser/context lifecycle reaches it).
+#         Moving the isolation into Tor's own config is what gives the JS-render
+#         path per-destination circuits without a credential ever reaching
+#         Chromium.
+#
+# A deployment that does not run this container (system tor, Tor Browser) simply
+# will not have 9250; scraper/scrape_js.py probes for it and degrades with a
+# one-time warning rather than pretending the JS path is isolated.
+CMD ["tor", \
+     "--SocksPort", "0.0.0.0:9050", \
+     "--SocksPort", "0.0.0.0:9250 IsolateDestAddr IsolateDestPort"]
