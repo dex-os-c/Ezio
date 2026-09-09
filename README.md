@@ -15,8 +15,6 @@
 
 Self-hostable OSINT for turning dark-web research queries into structured threat intelligence. Built for security researchers, threat-intelligence teams, and authorized investigators who need collection, enrichment, relationship mapping, and export in one workflow.
 
-> **Attribution:** Ezio is a rebrand/fork of [VoidAccess](https://github.com/KatrielMoses/voidaccess) by Katriel Moses (MIT licensed). The core investigation pipeline is the original project; the Ezio-specific additions are the eagle theming and the bonus `misconfig-scan` demo module.
-
 ## Terminal Output
 
 ![Ezio](public/terminal-hero.png)
