@@ -13,7 +13,7 @@ Ezio can run as a local CLI or as a four-service Docker Compose stack with Postg
 On macOS, Linux, or WSL:
 
 ```bash
-git clone https://github.com/KatrielMoses/Ezio.git
+git clone https://github.com/dex-os-c/Ezio.git
 cd Ezio
 bash setup.sh
 ```
@@ -21,7 +21,7 @@ bash setup.sh
 On native Windows:
 
 ```bat
-git clone https://github.com/KatrielMoses/Ezio.git
+git clone https://github.com/dex-os-c/Ezio.git
 cd Ezio
 setup.bat
 ```
@@ -31,7 +31,7 @@ The setup wizard creates `.env`, generates `JWT_SECRET` and `POSTGRES_PASSWORD`,
 ## Manual Docker Compose setup
 
 ```bash
-git clone https://github.com/KatrielMoses/Ezio.git
+git clone https://github.com/dex-os-c/Ezio.git
 cd Ezio
 cp .env.example .env
 docker compose up --build -d

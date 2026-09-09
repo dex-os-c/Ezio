@@ -150,7 +150,7 @@ Run the full PostgreSQL, Tor, FastAPI, and Next.js stack with Docker Compose. Th
 | [Security](SECURITY.md) | Supported versions and private vulnerability reporting |
 | [Usage policy](docs/USAGE_POLICY.md) | Authorized-use requirements and prohibited activity |
 | [PyPI](https://pypi.org/project/ezio/) | Published package and release files |
-| [GitHub](https://github.com/KatrielMoses/Ezio) | Source, issues, and releases |
+| [GitHub](https://github.com/dex-os-c/Ezio) | Source, issues, and releases |
 
 ## License
 
