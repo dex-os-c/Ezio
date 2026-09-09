@@ -96,7 +96,7 @@ export function MonitorDetail({
   };
 
   return (
-    <div className="bg-[var(--bg-void)] p-8 space-y-8">
+    <div className="bg-[var(--bg-ezio)] p-8 space-y-8">
       {/* Target & Control Row */}
       <div className="flex flex-wrap items-start justify-between gap-6">
         <div className="space-y-1.5">

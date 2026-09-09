@@ -112,7 +112,7 @@ export function CreateMonitorForm({ onSubmit }: Props) {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="e.g. Threat Actor Watch"
-              className="w-full h-11 px-4 rounded-md border border-[var(--border-dim)] bg-[var(--bg-void)] text-[13px] text-[var(--text-primary)] placeholder-[var(--text-muted)] opacity-70 focus:opacity-100 transition-all focus:border-[var(--accent-border)] outline-none"
+              className="w-full h-11 px-4 rounded-md border border-[var(--border-dim)] bg-[var(--bg-ezio)] text-[13px] text-[var(--text-primary)] placeholder-[var(--text-muted)] opacity-70 focus:opacity-100 transition-all focus:border-[var(--accent-border)] outline-none"
               disabled={submitting}
             />
           </div>
@@ -120,7 +120,7 @@ export function CreateMonitorForm({ onSubmit }: Props) {
           {/* Type Selection */}
           <div className="space-y-3">
              <label className="text-[10px] font-bold uppercase tracking-widest text-[var(--text-muted)]">Reconnaissance Mode</label>
-             <div className="flex p-1 bg-[var(--bg-void)] rounded-lg border border-[var(--border-dim)]">
+             <div className="flex p-1 bg-[var(--bg-ezio)] rounded-lg border border-[var(--border-dim)]">
                 {(["keyword", "url"] as const).map((t) => (
                   <button
                     key={t}
@@ -149,7 +149,7 @@ export function CreateMonitorForm({ onSubmit }: Props) {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder={type === "keyword" ? "Enter search string..." : "https://*.onion/"}
-              className="w-full h-11 px-4 rounded-md border border-[var(--border-dim)] bg-[var(--bg-void)] font-mono text-[12px] text-[var(--text-primary)] placeholder-[var(--text-muted)] opacity-70 focus:opacity-100 transition-all focus:border-[var(--accent-border)] outline-none"
+              className="w-full h-11 px-4 rounded-md border border-[var(--border-dim)] bg-[var(--bg-ezio)] font-mono text-[12px] text-[var(--text-primary)] placeholder-[var(--text-muted)] opacity-70 focus:opacity-100 transition-all focus:border-[var(--accent-border)] outline-none"
               disabled={submitting}
             />
           </div>
@@ -166,7 +166,7 @@ export function CreateMonitorForm({ onSubmit }: Props) {
                   className={`h-9 rounded border text-[11px] font-bold transition-all ${
                     intervalHours === opt.value
                       ? "border-[var(--accent)] bg-[var(--accent-dim)] text-[var(--accent)]"
-                      : "border-[var(--border-dim)] bg-[var(--bg-void)] text-[var(--text-muted)] hover:border-[var(--text-secondary)]"
+                      : "border-[var(--border-dim)] bg-[var(--bg-ezio)] text-[var(--text-muted)] hover:border-[var(--text-secondary)]"
                   }`}
                 >
                   {opt.label}
@@ -189,7 +189,7 @@ export function CreateMonitorForm({ onSubmit }: Props) {
                   className={`w-full flex items-center justify-between px-4 h-10 rounded border text-[11px] font-bold transition-all ${
                     alertOn === opt.value
                       ? "border-[var(--accent-border)] bg-[var(--bg-raised)] text-[var(--text-primary)]"
-                      : "border-[var(--border-dim)] bg-[var(--bg-void)] text-[var(--text-muted)] hover:border-[var(--text-secondary)]"
+                      : "border-[var(--border-dim)] bg-[var(--bg-ezio)] text-[var(--text-muted)] hover:border-[var(--text-secondary)]"
                   }`}
                 >
                   <span className="uppercase tracking-widest">{opt.label}</span>
@@ -215,7 +215,7 @@ export function CreateMonitorForm({ onSubmit }: Props) {
                     className={`w-full flex items-center justify-between px-4 h-9 rounded border text-[11px] font-bold transition-all ${
                       ch.enabled
                         ? "border-[var(--accent-dim)] bg-[var(--accent-dim)] text-[var(--accent)]"
-                        : "border-[var(--border-dim)] bg-[var(--bg-void)] text-[var(--text-muted)] hover:border-[var(--text-secondary)]"
+                        : "border-[var(--border-dim)] bg-[var(--bg-ezio)] text-[var(--text-muted)] hover:border-[var(--text-secondary)]"
                     }`}
                   >
                     <span className="uppercase tracking-widest">{ch.label}</span>

@@ -337,13 +337,13 @@ export function EntitySidebar({
             placeholder="Search investigation..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full rounded-md border border-[var(--border-subtle)] bg-[var(--bg-void)] py-1.5 pl-9 pr-3 text-[12px] text-[var(--text-primary)] outline-none transition-all placeholder:text-[var(--text-muted)] focus:border-[var(--accent-border)] focus:ring-1 focus:ring-[var(--accent-dim)]"
+            className="w-full rounded-md border border-[var(--border-subtle)] bg-[var(--bg-ezio)] py-1.5 pl-9 pr-3 text-[12px] text-[var(--text-primary)] outline-none transition-all placeholder:text-[var(--text-muted)] focus:border-[var(--accent-border)] focus:ring-1 focus:ring-[var(--accent-dim)]"
           />
         </div>
         <select
           value={minConfidence}
           onChange={(e) => onMinConfidenceChange?.(parseFloat(e.target.value))}
-          className="w-full rounded-md border border-[var(--border-subtle)] bg-[var(--bg-void)] py-1.5 px-2 text-[11px] text-[var(--text-secondary)] outline-none transition-all focus:border-[var(--accent-border)] cursor-pointer"
+          className="w-full rounded-md border border-[var(--border-subtle)] bg-[var(--bg-ezio)] py-1.5 px-2 text-[11px] text-[var(--text-secondary)] outline-none transition-all focus:border-[var(--accent-border)] cursor-pointer"
         >
           {CONFIDENCE_OPTIONS.map((opt) => (
             <option key={opt.value} value={opt.value}>
@@ -354,7 +354,7 @@ export function EntitySidebar({
         <select
           value={freshnessFilter}
           onChange={(e) => setFreshnessFilter(e.target.value)}
-          className="w-full rounded-md border border-[var(--border-subtle)] bg-[var(--bg-void)] py-1.5 px-2 text-[11px] text-[var(--text-secondary)] outline-none transition-all focus:border-[var(--accent-border)] cursor-pointer"
+          className="w-full rounded-md border border-[var(--border-subtle)] bg-[var(--bg-ezio)] py-1.5 px-2 text-[11px] text-[var(--text-secondary)] outline-none transition-all focus:border-[var(--accent-border)] cursor-pointer"
         >
           {FRESHNESS_OPTIONS.map((opt) => (
             <option key={opt.value} value={opt.value}>

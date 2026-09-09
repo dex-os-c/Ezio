@@ -48,7 +48,7 @@ export function InfrastructureClusters({
             className="rounded-md border border-[var(--border-dim)] bg-[var(--bg-raised)] overflow-hidden"
           >
             <button
-              className="w-full flex items-start gap-3 px-4 py-3 text-left hover:bg-[var(--bg-void)] transition-colors"
+              className="w-full flex items-start gap-3 px-4 py-3 text-left hover:bg-[var(--bg-ezio)] transition-colors"
               onClick={() => setExpandedIndex(isExpanded ? null : i)}
             >
               {/* Icon */}
@@ -80,7 +80,7 @@ export function InfrastructureClusters({
             </button>
 
             {isExpanded && (
-              <div className="border-t border-[var(--border-dim)] px-4 py-3 bg-[var(--bg-void)]">
+              <div className="border-t border-[var(--border-dim)] px-4 py-3 bg-[var(--bg-ezio)]">
                 <p className="text-[11px] text-[var(--text-secondary)] mb-3">
                   {cluster.description}
                 </p>

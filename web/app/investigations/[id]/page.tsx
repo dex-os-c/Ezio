@@ -227,7 +227,7 @@ export default function InvestigationPage() {
 
   if (!investigationParamId || !investigation) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-[var(--bg-void)]">
+      <div className="flex min-h-screen items-center justify-center bg-[var(--bg-ezio)]">
         <div className="flex flex-col items-center gap-6">
           <div className="h-10 w-10 animate-spin rounded-full border-2 border-[var(--accent)] border-t-transparent shadow-[0_0_15px_var(--accent-dim)]" />
           <div className="space-y-1 text-center">
@@ -241,7 +241,7 @@ export default function InvestigationPage() {
 
   if (investigation.status === "completed_no_results") {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center bg-[var(--bg-void)] px-4">
+      <div className="flex min-h-screen flex-col items-center justify-center bg-[var(--bg-ezio)] px-4">
         <div className="flex flex-col items-center gap-6 rounded-lg border border-[var(--border-dim)] bg-[var(--bg-surface)] p-8 shadow-xl max-w-md text-center">
           <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[var(--bg-raised)]">
             <svg className="h-8 w-8 text-[var(--text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -283,7 +283,7 @@ export default function InvestigationPage() {
   }
 
   return (
-    <div className="flex h-screen flex-col bg-[var(--bg-void)] overflow-hidden font-sans">
+    <div className="flex h-screen flex-col bg-[var(--bg-ezio)] overflow-hidden font-sans">
       {/* Header Bar */}
       <InvestigationSummary
         investigation={investigation}
@@ -365,7 +365,7 @@ export default function InvestigationPage() {
               Showing {graphData.filtered_entities} of {graphData.total_entities}
             </span>
           )}
-          <div className="flex items-center bg-[var(--bg-void)] rounded-md border border-[var(--border-dim)] p-0.5">
+          <div className="flex items-center bg-[var(--bg-ezio)] rounded-md border border-[var(--border-dim)] p-0.5">
             <button
               onClick={() => setStrongEdgesOnly(true)}
               className={`px-3 py-1 text-[10px] font-bold uppercase tracking-widest transition-all rounded ${strongEdgesOnly ? "bg-[var(--accent)] text-[var(--text-inverse)] shadow-lg" : "text-[var(--text-muted)] hover:text-[var(--text-primary)]"}`}
@@ -414,8 +414,8 @@ export default function InvestigationPage() {
         </aside>
 
         {/* CENTER PANEL: Graph */}
-        <main className="flex-1 relative bg-[var(--bg-void)] transition-all duration-300">
-          <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,_transparent_0%,_var(--bg-void)_85%)] z-10 opacity-40" />
+        <main className="flex-1 relative bg-[var(--bg-ezio)] transition-all duration-300">
+          <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,_transparent_0%,_var(--bg-ezio)_85%)] z-10 opacity-40" />
           {isNoData ? (
             <div className="flex h-full flex-col items-center justify-center">
               <div className="flex flex-col items-center gap-6 rounded-lg border border-[var(--border-dim)] bg-[var(--bg-surface)] p-8 shadow-xl max-w-md text-center">
@@ -528,7 +528,7 @@ export default function InvestigationPage() {
         </div>
 
         {expandedPanel && (
-          <div className="h-[320px] overflow-y-auto bg-[var(--bg-void)] px-6 py-6 border-t border-[var(--border-dim)] animate-in slide-in-from-bottom-2 duration-300 custom-scrollbar">
+          <div className="h-[320px] overflow-y-auto bg-[var(--bg-ezio)] px-6 py-6 border-t border-[var(--border-dim)] animate-in slide-in-from-bottom-2 duration-300 custom-scrollbar">
             {expandedPanel === "temporal" && <TemporalAnalysisPanel investigationId={investigationParamId} />}
             {expandedPanel === "opsec" && <OpsecPanel entityId={detailsEntity?.id || ""} data={null} loading={false} error={null} onExpand={() => {}} />}
             {expandedPanel === "stylometry" && <StylometryPanel entityId={detailsEntity?.id || ""} data={null} loading={false} error={null} onExpand={() => {}} />}

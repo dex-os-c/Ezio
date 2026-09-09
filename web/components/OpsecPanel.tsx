@@ -103,7 +103,7 @@ export function OpsecPanel({ entityId: _entityId, data, loading, error, onExpand
         
         <div className="flex items-center gap-4">
           {hasData && (
-            <div className="flex items-center gap-2 px-2 py-0.5 rounded border border-[var(--border-subtle)] bg-[var(--bg-void)]">
+            <div className="flex items-center gap-2 px-2 py-0.5 rounded border border-[var(--border-subtle)] bg-[var(--bg-ezio)]">
                <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: riskLevelColor(riskLevel) }} />
                <span className="text-[9px] font-bold uppercase tracking-widest text-[var(--text-secondary)]">Risk: {riskLevel}</span>
             </div>
@@ -165,7 +165,7 @@ export function OpsecPanel({ entityId: _entityId, data, loading, error, onExpand
               </div>
 
               {/* Score bar */}
-              <div className="h-1.5 w-full rounded-full bg-[var(--bg-void)] overflow-hidden">
+              <div className="h-1.5 w-full rounded-full bg-[var(--bg-ezio)] overflow-hidden">
                 <div
                   className="h-full transition-all duration-1000 ease-out"
                   style={{
@@ -208,7 +208,7 @@ export function OpsecPanel({ entityId: _entityId, data, loading, error, onExpand
                         <p className="text-[12px] text-[var(--text-secondary)] leading-relaxed mb-3">
                           {finding.description}
                         </p>
-                        <div className="rounded border border-[var(--border-dim)] bg-[var(--bg-void)] p-2.5">
+                        <div className="rounded border border-[var(--border-dim)] bg-[var(--bg-ezio)] p-2.5">
                             <span className="block text-[8px] font-bold uppercase tracking-widest text-[var(--text-muted)] mb-1">Evidence Hash</span>
                             <p className="font-mono text-[10px] text-[var(--accent)] break-all leading-snug">
                                 {finding.evidence}

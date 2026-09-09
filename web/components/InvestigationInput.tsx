@@ -147,7 +147,7 @@ export function InvestigationInput() {
         </div>
 
         {/* Toolbar */}
-        <div className="flex items-center justify-between border-t border-[var(--border-dim)] bg-[var(--bg-void)]/30 px-3 py-2.5">
+        <div className="flex items-center justify-between border-t border-[var(--border-dim)] bg-[var(--bg-ezio)]/30 px-3 py-2.5">
           <div className="flex items-center gap-2">
             <ModelSelector value={model} onChange={setModel} />
 

@@ -80,7 +80,7 @@ function FeatureBar({
         </div>
       </div>
       
-      <div className="relative h-1 w-full bg-[var(--bg-void)] rounded-full overflow-hidden">
+      <div className="relative h-1 w-full bg-[var(--bg-ezio)] rounded-full overflow-hidden">
         {/* Value Fill */}
         <div
           className="h-full transition-all duration-1000 ease-out"
@@ -109,7 +109,7 @@ function ConfidenceBadge({ level }: { level: "low" | "medium" | "high" }) {
       className="rounded px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest border border-[rgba(255,255,255,0.05)]"
       style={{
         color: colors[level],
-        backgroundColor: "var(--bg-void)",
+        backgroundColor: "var(--bg-ezio)",
       }}
     >
       {level}
@@ -278,7 +278,7 @@ export function StylometryPanel({ entityId: _entityId, data, loading, error, onE
                       {data.similar_actors.map((match) => (
                         <div
                           key={match.canonical_value}
-                          className="flex items-center justify-between p-3 rounded-md bg-[var(--bg-void)] border border-[rgba(255,0,0,0.1)] hover:border-[rgba(255,0,0,0.3)] transition-all group"
+                          className="flex items-center justify-between p-3 rounded-md bg-[var(--bg-ezio)] border border-[rgba(255,0,0,0.1)] hover:border-[rgba(255,0,0,0.3)] transition-all group"
                         >
                           <div className="flex flex-col gap-0.5">
                             <span className="font-mono text-[12px] font-bold text-[var(--text-primary)] group-hover:text-[var(--danger)] transition-colors">

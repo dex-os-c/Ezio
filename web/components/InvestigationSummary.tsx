@@ -129,7 +129,7 @@ export function InvestigationSummary({
   }
 
   return (
-    <header className="flex h-[56px] shrink-0 items-center justify-between border-b border-[var(--border-dim)] bg-[var(--bg-void)]/60 px-6 backdrop-blur-xl">
+    <header className="flex h-[56px] shrink-0 items-center justify-between border-b border-[var(--border-dim)] bg-[var(--bg-ezio)]/60 px-6 backdrop-blur-xl">
       <div className="flex items-center gap-6">
         <Link href="/" className="flex items-center gap-2 font-heading transition-opacity hover:opacity-80">
           <span className="text-[var(--accent)]" aria-hidden>●</span>

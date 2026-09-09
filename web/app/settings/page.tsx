@@ -167,8 +167,8 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--bg-void)]">
-      <header className="sticky top-0 z-10 flex h-[56px] shrink-0 items-center justify-between border-b border-[var(--border-dim)] bg-[var(--bg-void)]/80 px-6 backdrop-blur-md">
+    <div className="min-h-screen bg-[var(--bg-ezio)]">
+      <header className="sticky top-0 z-10 flex h-[56px] shrink-0 items-center justify-between border-b border-[var(--border-dim)] bg-[var(--bg-ezio)]/80 px-6 backdrop-blur-md">
         <Link href="/" className="flex items-center gap-2 text-sm text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]">
           ← Back
         </Link>
@@ -245,7 +245,7 @@ export default function SettingsPage() {
                     placeholder="Enter new key to update"
                     value={inputValues[def.key_name] || ""}
                     onChange={(e) => setInputValues((prev) => ({ ...prev, [def.key_name]: e.target.value }))}
-                    className="flex-1 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-void)] px-3 py-2 text-sm text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:border-[var(--accent)] focus:outline-none"
+                    className="flex-1 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-ezio)] px-3 py-2 text-sm text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:border-[var(--accent)] focus:outline-none"
                   />
                   <button
                     onClick={() => handleTest(def.key_name)}

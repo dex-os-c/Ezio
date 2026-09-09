@@ -357,7 +357,7 @@ export function ModelSelector({ value, onChange }: ModelSelectorProps) {
           aria-label="Model picker"
         >
           {/* Tabs */}
-          <div className="flex border-b border-[var(--border-dim)] bg-[var(--bg-void)]/60">
+          <div className="flex border-b border-[var(--border-dim)] bg-[var(--bg-ezio)]/60">
             <button
               type="button"
               onClick={() => setMode("browse")}

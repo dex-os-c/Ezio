@@ -36,7 +36,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans antialiased text-[var(--text-primary)] bg-[var(--bg-void)]`}>
+      <body className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans antialiased text-[var(--text-primary)] bg-[var(--bg-ezio)]`}>
         <KeyboardShortcutsProvider>
           {children}
         </KeyboardShortcutsProvider>

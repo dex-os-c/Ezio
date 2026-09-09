@@ -74,7 +74,7 @@ export default function InvestigationsPage() {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <header className="sticky top-0 z-10 flex h-[56px] shrink-0 items-center justify-between border-b border-[var(--border-dim)] bg-[var(--bg-void)]/60 px-6 backdrop-blur-xl">
+      <header className="sticky top-0 z-10 flex h-[56px] shrink-0 items-center justify-between border-b border-[var(--border-dim)] bg-[var(--bg-ezio)]/60 px-6 backdrop-blur-xl">
         <div className="flex items-center gap-6">
           <button
             onClick={() => router.push("/")}

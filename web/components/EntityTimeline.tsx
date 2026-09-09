@@ -48,7 +48,7 @@ export function EntityTimeline({ entity }: Props) {
           {appearances.map((ap, i) => (
             <div key={ap.investigation_id} className="relative">
               {/* Event Marker */}
-              <div className={`absolute -left-[28px] top-1.5 h-3 w-3 rounded-full border-2 border-[var(--bg-void)] ring-1 ${i === 0 ? "bg-[var(--accent)] ring-[var(--accent-border)]" : "bg-[var(--border-strong)] ring-[var(--border-dim)]"}`} />
+              <div className={`absolute -left-[28px] top-1.5 h-3 w-3 rounded-full border-2 border-[var(--bg-ezio)] ring-1 ${i === 0 ? "bg-[var(--accent)] ring-[var(--accent-border)]" : "bg-[var(--border-strong)] ring-[var(--border-dim)]"}`} />
               
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
@@ -71,7 +71,7 @@ export function EntityTimeline({ entity }: Props) {
           {/* First Seen Marker */}
           {first_seen && (
             <div className="relative">
-               <div className="absolute -left-[28px] top-1.5 h-3 w-3 rounded-full border-2 border-[var(--bg-void)] ring-1 bg-[var(--warning)] ring-[var(--warning-dim)]" />
+               <div className="absolute -left-[28px] top-1.5 h-3 w-3 rounded-full border-2 border-[var(--bg-ezio)] ring-1 bg-[var(--warning)] ring-[var(--warning-dim)]" />
                <div className="space-y-1">
                   <time className="text-[10px] font-mono font-bold text-[var(--warning)] opacity-60 uppercase">{formatDate(first_seen)}</time>
                   <div className="p-3 rounded-md bg-[var(--warning-dim)]/20 border border-[var(--warning)]/10">

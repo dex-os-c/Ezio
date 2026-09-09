@@ -28,7 +28,7 @@ export default function EntityProfilePage() {
   // ── loading state ──
   if (loading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-[var(--bg-void)]">
+      <div className="flex min-h-screen items-center justify-center bg-[var(--bg-ezio)]">
         <div className="flex flex-col items-center gap-6">
           <div className="h-10 w-10 animate-spin rounded-full border-2 border-[var(--accent)] border-t-transparent shadow-[0_0_15px_var(--accent-dim)]" />
           <div className="space-y-1 text-center">
@@ -43,7 +43,7 @@ export default function EntityProfilePage() {
   // ── 404 / error state ──
   if (error || !entity) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center gap-6 bg-[var(--bg-void)]">
+      <div className="flex min-h-screen flex-col items-center justify-center gap-6 bg-[var(--bg-ezio)]">
         <div className="p-1.5 rounded-full border border-[var(--danger)] bg-[var(--danger-dim)]">
            <svg className="h-8 w-8 text-[var(--danger)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
@@ -72,7 +72,7 @@ export default function EntityProfilePage() {
   const meta = CATEGORY_META[cat];
 
   return (
-    <div className="relative min-h-screen bg-[var(--bg-void)] font-sans text-[var(--text-primary)] overflow-x-hidden">
+    <div className="relative min-h-screen bg-[var(--bg-ezio)] font-sans text-[var(--text-primary)] overflow-x-hidden">
       {/* Design System Noise/Overlay */}
       <div className="pointer-events-none fixed inset-0 z-50 opacity-[0.03] contrast-150" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} />
       
@@ -143,8 +143,8 @@ export default function EntityProfilePage() {
                   <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--text-primary)]">Relational Network</h3>
                   <span className="text-[9px] font-mono font-bold text-[var(--text-muted)]">{related?.neighbors.length || 0} Nodes</span>
                </div>
-               <div className="h-[460px] relative bg-[var(--bg-void)]">
-                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_var(--bg-void)_90%)] z-10 opacity-30 pointer-events-none" />
+               <div className="h-[460px] relative bg-[var(--bg-ezio)]">
+                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_var(--bg-ezio)_90%)] z-10 opacity-30 pointer-events-none" />
                  <EntityMiniGraph data={related} loading={!entity && loading} />
                </div>
             </div>

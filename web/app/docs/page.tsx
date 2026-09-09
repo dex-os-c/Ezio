@@ -15,7 +15,7 @@ const ENTITY_TYPES = [
 
 export default function DocsPage() {
   return (
-    <div className="min-h-screen bg-[var(--bg-void)]">
+    <div className="min-h-screen bg-[var(--bg-ezio)]">
       <div className="max-w-[720px] mx-auto px-6 py-12">
         <Link
           href="/"

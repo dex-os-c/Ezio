@@ -643,7 +643,7 @@ export function GraphVisualization({
         const sigma = sigmaRef.current;
         if (g && sigma) {
           let sx = 0, sy = 0, cnt = 0;
-          for (const nid of nodes) {
+          for (const nid of Array.from(nodes)) {
             if (!g.hasNode(nid)) continue;
             const pos = g.getNodeAttribute(nid, "x") as number;
             const posy = g.getNodeAttribute(nid, "y") as number;
@@ -733,7 +733,7 @@ export function GraphVisualization({
       stagePadding:               90,
       labelRenderedSizeThreshold: 18,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      drawLabel: (context: CanvasRenderingContext2D, data: any, settings: any) => {
+      labelRenderer: (context: CanvasRenderingContext2D, data: any, settings: any) => {
         const { x, y, label, size } = data;
         if (!label) return;
 
@@ -1156,14 +1156,14 @@ export function GraphVisualization({
   // ── States ────────────────────────────────────────────────────────────────────
   if (error) {
     return (
-      <div className="flex h-full items-center justify-center p-8 bg-[var(--bg-void)]">
+      <div className="flex h-full items-center justify-center p-8 bg-[var(--bg-ezio)]">
         <p className="font-mono text-[13px] text-[var(--danger)]">Intelligence feed error: {error}</p>
       </div>
     );
   }
   if (loading && (!data || data.nodes.length === 0)) {
     return (
-      <div className="flex h-full items-center justify-center bg-[var(--bg-void)]">
+      <div className="flex h-full items-center justify-center bg-[var(--bg-ezio)]">
         <div className="flex flex-col items-center gap-4">
           <div className="h-6 w-6 animate-spin rounded-full border-2 border-[var(--accent)] border-t-transparent" />
           <p className="font-mono text-[11px] uppercase tracking-widest text-[var(--text-muted)]">Mapping Node Set</p>
@@ -1174,7 +1174,7 @@ export function GraphVisualization({
 
   // ── Render ────────────────────────────────────────────────────────────────────
   return (
-    <div className="relative h-full w-full bg-[var(--bg-void)] overflow-hidden">
+    <div className="relative h-full w-full bg-[var(--bg-ezio)] overflow-hidden">
 
       {/* Sigma canvas — tabIndex makes it keyboard-focusable for graph shortcuts */}
       <div

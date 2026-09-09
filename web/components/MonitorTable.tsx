@@ -219,7 +219,7 @@ export function MonitorTable({
               </tr>
               {expanded === m.id && (
                 <tr>
-                  <td colSpan={7} className="p-0 bg-[var(--bg-void)]">
+                  <td colSpan={7} className="p-0 bg-[var(--bg-ezio)]">
                     <div className="p-6 border-b border-[var(--border-dim)] animate-in slide-in-from-top-2 duration-300">
                       <MonitorDetail
                         monitor={m}

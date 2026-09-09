@@ -6,7 +6,7 @@ import { useTemporalAnalysis } from "@/lib/hooks/useTemporalAnalysis";
 // ─── Heatmap color helper ────────────────────────────────────────────────────
 
 function heatmapColor(value: number, max: number): string {
-  if (value === 0) return "var(--bg-void)";
+  if (value === 0) return "var(--bg-ezio)";
   const ratio = max > 0 ? value / max : 0;
   if (ratio < 0.25) return "var(--accent-dim)";
   if (ratio < 0.6) return "var(--accent-border)";
@@ -69,7 +69,7 @@ export function TemporalAnalysisPanel({ investigationId }: Props) {
           {data && !data.error && (
             <div className="flex items-center gap-2">
               <span className="text-[9px] font-bold text-[var(--text-muted)] uppercase tracking-widest">Span</span>
-              <span className="font-mono text-[9px] text-[var(--text-secondary)] bg-[var(--bg-void)] px-1.5 py-0.5 rounded border border-[rgba(255,255,255,0.05)]">
+              <span className="font-mono text-[9px] text-[var(--text-secondary)] bg-[var(--bg-ezio)] px-1.5 py-0.5 rounded border border-[rgba(255,255,255,0.05)]">
                 {data.total_timespan_days}d
               </span>
             </div>

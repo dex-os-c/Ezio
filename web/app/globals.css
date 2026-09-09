@@ -4,7 +4,7 @@
 
 :root {
   /* Backgrounds — layered depth */
-  --bg-void:    #080b11;   /* Deepest background (dark navy) */
+  --bg-ezio:    #080b11;   /* Deepest background (dark navy) */
   --bg-surface: #0d1117;   /* Card/panel backgrounds */
   --bg-raised:  #161b22;   /* Elevated elements */
   --bg-overlay: #1c2128;   /* Hover states, selected */
@@ -54,7 +54,7 @@
 
 @layer base {
   body {
-    @apply bg-[var(--bg-void)] text-[var(--text-primary)] antialiased;
+    @apply bg-[var(--bg-ezio)] text-[var(--text-primary)] antialiased;
     font-family: var(--font-body);
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
@@ -106,7 +106,7 @@
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-void);
+  background: var(--bg-ezio);
 }
 ::-webkit-scrollbar-thumb {
   background: var(--bg-overlay);

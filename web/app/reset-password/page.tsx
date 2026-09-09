@@ -44,7 +44,7 @@ export default function ResetPasswordPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[var(--bg-void)] p-4 relative overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center bg-[var(--bg-ezio)] p-4 relative overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[var(--status-warning)] opacity-[0.03] blur-[120px] rounded-full pointer-events-none" />
 
       <div className="w-full max-w-[400px] relative">

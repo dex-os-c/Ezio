@@ -166,7 +166,7 @@ export function EntityDetailsPanel({
                   <span className="text-[9px] font-bold uppercase tracking-wider text-[var(--text-muted)]">Confidence</span>
                   <div className="mt-1 flex items-end gap-1.5">
                     <p className="font-mono text-[13px] font-bold text-[var(--success)]">{confPct}%</p>
-                    <div className="mb-0.5 flex h-1 w-12 bg-[var(--bg-void)] rounded-full overflow-hidden">
+                    <div className="mb-0.5 flex h-1 w-12 bg-[var(--bg-ezio)] rounded-full overflow-hidden">
                       <div className="h-full bg-[var(--success)]" style={{ width: `${confPct}%` }} />
                     </div>
                   </div>
@@ -199,7 +199,7 @@ export function EntityDetailsPanel({
               {/* Context Block */}
               <div className="space-y-3">
                 <h3 className="text-[11px] font-bold uppercase tracking-widest text-[var(--text-secondary)]">Primary Context</h3>
-                <div className="relative rounded-lg border border-[var(--border-dim)] bg-[var(--bg-void)] p-4">
+                <div className="relative rounded-lg border border-[var(--border-dim)] bg-[var(--bg-ezio)] p-4">
                   <span className="absolute -top-2 left-3 bg-[var(--bg-surface)] px-1 font-mono text-[14px] text-[var(--accent)] opacity-50">&ldquo;</span>
                   <p className="font-body text-[13px] leading-relaxed text-[var(--text-secondary)] italic">
                     {entity.context || "No contextual associations captured during this investigation cycle."}
@@ -251,7 +251,7 @@ export function EntityDetailsPanel({
           </button>
           <button
             onClick={onExportThisEntity}
-            className="flex items-center justify-center rounded-md border border-[var(--border-subtle)] bg-[var(--bg-void)] py-2.5 text-[11px] font-bold text-[var(--text-primary)] transition-all hover:bg-[var(--bg-overlay)] hover:border-[var(--border-strong)]"
+            className="flex items-center justify-center rounded-md border border-[var(--border-subtle)] bg-[var(--bg-ezio)] py-2.5 text-[11px] font-bold text-[var(--text-primary)] transition-all hover:bg-[var(--bg-overlay)] hover:border-[var(--border-strong)]"
           >
             Export Record
           </button>

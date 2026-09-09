@@ -102,7 +102,7 @@ export function EntityIdentityPanel({ entity }: Props) {
           {isWallet ? (
             <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-[var(--bg-void)] border border-[var(--border-dim)] text-[var(--text-muted)] uppercase">{blockchainLabel(entity.entity_type)}</span>
+                <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-[var(--bg-ezio)] border border-[var(--border-dim)] text-[var(--text-muted)] uppercase">{blockchainLabel(entity.entity_type)}</span>
                 <CopyButton text={entity.value} />
               </div>
               <p className="font-mono text-[13px] font-bold text-[var(--text-primary)] break-all leading-tight">
@@ -148,7 +148,7 @@ export function EntityIdentityPanel({ entity }: Props) {
             <span className="text-[9px] font-bold uppercase tracking-widest text-[var(--text-muted)]">Signal Confidence</span>
             <span className="font-mono text-[11px] font-bold" style={{ color: confColor }}>{confPct}%</span>
           </div>
-          <div className="h-1.5 rounded-full bg-[var(--bg-void)] overflow-hidden border border-[var(--border-dim)]">
+          <div className="h-1.5 rounded-full bg-[var(--bg-ezio)] overflow-hidden border border-[var(--border-dim)]">
             <div
               className="h-full rounded-full transition-all duration-700 ease-out"
               style={{ width: `${confPct}%`, backgroundColor: confColor }}
