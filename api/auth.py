@@ -22,7 +22,7 @@ from sqlalchemy.orm import Session
 
 from config import JWT_SECRET
 from db.models import User
-from db.session import get_session, get_db
+from db.session import get_db
 from auth.token_blacklist import is_token_revoked, BlacklistUnavailableError
 
 logger = logging.getLogger(__name__)
