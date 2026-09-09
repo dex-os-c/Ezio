@@ -4,7 +4,7 @@ import os
 import sys
 import unittest
 import logging
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch
 
 
 class TestConfigOTXKey(unittest.TestCase):
@@ -42,7 +42,6 @@ class TestConfigValidation(unittest.TestCase):
 
         with patch.dict(os.environ, {"JWT_SECRET": "test-secret-key-123"}, clear=True):
             import ezio.config as config_module
-            import logging
             import importlib
             importlib.reload(config_module)
 

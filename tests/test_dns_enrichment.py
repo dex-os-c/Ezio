@@ -6,10 +6,9 @@ disabled-by-env toggle, and tag assignment logic.
 """
 
 import asyncio
-import os
 import pytest
 from datetime import datetime, timedelta, timezone
-from unittest.mock import AsyncMock, MagicMock, patch
+from unittest.mock import AsyncMock, MagicMock
 
 from sources.dns_enrichment import DNSEnrichment, enrich_with_dns
 
@@ -213,7 +212,7 @@ async def test_new_entities_have_confidence():
 
 def test_recently_registered_tag(monkeypatch):
     """Domain registered 10 days ago should get 'recently_registered' tag."""
-    enricher = _make_enricher()
+    _make_enricher()
 
     reg_date = (datetime.now(timezone.utc) - timedelta(days=10)).isoformat()
 
@@ -250,7 +249,7 @@ def test_recently_registered_tag(monkeypatch):
 
 def test_c2_hoster_tag():
     """IP belonging to Vultr ASN should get 'c2_hoster_vultr' tag."""
-    enricher = _make_enricher()
+    _make_enricher()
 
     # Inline the org-check logic from _enrich_ip
     whois = {"org": "Vultr Holdings LLC", "country": "US"}

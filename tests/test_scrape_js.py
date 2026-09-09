@@ -1,5 +1,4 @@
 """Tests for Playwright JS rendering module."""
-import pytest
 from scraper.scrape_js import is_js_rendered
 
 

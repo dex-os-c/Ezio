@@ -23,7 +23,6 @@ import asyncio
 import base64
 from unittest.mock import AsyncMock, MagicMock, patch
 
-import pytest
 
 from sources.github_scraper import (
     CODE_SEARCH_RATE_LIMIT_DELAY,

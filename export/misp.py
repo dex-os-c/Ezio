@@ -239,12 +239,12 @@ def _load_investigation_and_entity_rows(
         if inv_uuid is None:
             return None, []
 
-        filter_uuids: Optional[list[_uuid.UUID]] = None
+        filter_uuids: Optional[list[uuid.UUID]] = None
         if entity_ids:
             filter_uuids = []
             for raw in entity_ids:
                 try:
-                    filter_uuids.append(_uuid.UUID(str(raw)))
+                    filter_uuids.append(uuid.UUID(str(raw)))
                 except (ValueError, AttributeError):
                     continue
 

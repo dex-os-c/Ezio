@@ -349,7 +349,7 @@ def test_configure_proxy_show_masks_key(isolated_config_home, monkeypatch, capsy
     cfg["enrichment_keys"]["SCRAPINGANT_API_KEY"] = "abcdefgh12345678"
     isolated_config_home.save_config(cfg)
 
-    from ezio_cli.commands.configure import configure_proxy, app as configure_app
+    from ezio_cli.commands.configure import app as configure_app
     from typer.testing import CliRunner
 
     runner = CliRunner()
@@ -366,7 +366,7 @@ def test_configure_proxy_show_includes_username_row(isolated_config_home, monkey
     cfg["enrichment_keys"]["SCRAPINGANT_API_KEY"] = "abcdefgh12345678"
     isolated_config_home.save_config(cfg)
 
-    from ezio_cli.commands.configure import configure_proxy, app as configure_app
+    from ezio_cli.commands.configure import app as configure_app
     from typer.testing import CliRunner
 
     runner = CliRunner()
@@ -383,7 +383,7 @@ def test_configure_proxy_show_displays_pool_type(isolated_config_home, monkeypat
     cfg["enrichment_keys"]["SCRAPINGANT_PROXY_TYPE"] = "datacenter"
     isolated_config_home.save_config(cfg)
 
-    from ezio_cli.commands.configure import configure_proxy, app as configure_app
+    from ezio_cli.commands.configure import app as configure_app
     from typer.testing import CliRunner
 
     runner = CliRunner()
@@ -401,7 +401,7 @@ def test_configure_proxy_show_displays_transport_states(isolated_config_home, mo
     cfg["features"]["use_proxy"] = False
     isolated_config_home.save_config(cfg)
 
-    from ezio_cli.commands.configure import configure_proxy, app as configure_app
+    from ezio_cli.commands.configure import app as configure_app
     from typer.testing import CliRunner
 
     runner = CliRunner()
@@ -422,7 +422,7 @@ def test_configure_proxy_show_warns_both_transports(isolated_config_home, monkey
     cfg["features"]["use_proxy"] = True
     isolated_config_home.save_config(cfg)
 
-    from ezio_cli.commands.configure import configure_proxy, app as configure_app
+    from ezio_cli.commands.configure import app as configure_app
     from typer.testing import CliRunner
 
     runner = CliRunner()
@@ -443,7 +443,7 @@ def test_configure_proxy_disable_clears_toggle(isolated_config_home, monkeypatch
     cfg["features"]["use_proxies"] = True
     isolated_config_home.save_config(cfg)
 
-    from ezio_cli.commands.configure import configure_proxy, app as configure_app
+    from ezio_cli.commands.configure import app as configure_app
     from typer.testing import CliRunner
 
     runner = CliRunner()
@@ -462,7 +462,7 @@ def test_configure_proxy_enable_warns_when_no_key(isolated_config_home, monkeypa
     cfg["enrichment_keys"]["SCRAPINGANT_API_KEY"] = ""
     isolated_config_home.save_config(cfg)
 
-    from ezio_cli.commands.configure import configure_proxy, app as configure_app
+    from ezio_cli.commands.configure import app as configure_app
     from typer.testing import CliRunner
 
     runner = CliRunner()
@@ -483,7 +483,7 @@ def test_configure_proxy_enable_proxy_sets_use_proxy(isolated_config_home, monke
     cfg["features"]["use_proxy"] = False
     isolated_config_home.save_config(cfg)
 
-    from ezio_cli.commands.configure import configure_proxy, app as configure_app
+    from ezio_cli.commands.configure import app as configure_app
     from typer.testing import CliRunner
 
     runner = CliRunner()
@@ -501,7 +501,7 @@ def test_configure_proxy_disable_proxy_sets_use_proxy_false(isolated_config_home
     cfg["features"]["use_proxy"] = True
     isolated_config_home.save_config(cfg)
 
-    from ezio_cli.commands.configure import configure_proxy, app as configure_app
+    from ezio_cli.commands.configure import app as configure_app
     from typer.testing import CliRunner
 
     runner = CliRunner()
@@ -520,7 +520,7 @@ def test_configure_proxy_enable_proxy_warns_when_no_key(isolated_config_home, mo
     cfg["enrichment_keys"]["SCRAPINGANT_API_KEY"] = ""
     isolated_config_home.save_config(cfg)
 
-    from ezio_cli.commands.configure import configure_proxy, app as configure_app
+    from ezio_cli.commands.configure import app as configure_app
     from typer.testing import CliRunner
 
     runner = CliRunner()
@@ -539,7 +539,7 @@ def test_configure_proxy_enable_proxy_does_not_warn_about_username(
     cfg["enrichment_keys"]["SCRAPINGANT_API_KEY"] = "abcdefgh12345678"
     isolated_config_home.save_config(cfg)
 
-    from ezio_cli.commands.configure import configure_proxy, app as configure_app
+    from ezio_cli.commands.configure import app as configure_app
     from typer.testing import CliRunner
 
     runner = CliRunner()

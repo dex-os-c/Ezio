@@ -63,7 +63,6 @@ class TestCachedFeed(unittest.TestCase):
             feed._is_fresh = MagicMock(return_value=True)
             feed.cache_path = Path(cache_path)
 
-            import builtins
             with patch("builtins.open", MagicMock()):
                 result = feed._is_fresh()
                 self.assertTrue(result)

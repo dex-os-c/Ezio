@@ -10,7 +10,6 @@ graceful degradation, MAX_EMAILS cap, log hygiene, confidence floor/ceiling,
 
 from __future__ import annotations
 
-import asyncio
 import os
 import time
 from unittest.mock import AsyncMock, MagicMock, patch

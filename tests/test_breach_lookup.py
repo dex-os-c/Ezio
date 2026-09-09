@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import re
 
-import pytest
 from aioresponses import aioresponses
 
 from sources import breach_lookup as bl

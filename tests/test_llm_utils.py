@@ -9,7 +9,7 @@ Covers:
 
 import logging
 import pytest
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch
 
 
 # ─── Prefix routing tests ────────────────────────────────────────────────────
@@ -148,7 +148,7 @@ def test_user_key_overrides_missing_server_key():
     with patch("ezio.llm_utils.OPENROUTER_API_KEY", None):
         # Should NOT raise — user key is provided in api_keys
         with patch("langchain_openai.ChatOpenAI.__init__", return_value=None):
-            llm = _make_openrouter_llm(
+            _make_openrouter_llm(
                 "deepseek/deepseek-chat",
                 api_keys={"OPENROUTER_API_KEY": "sk-user-override-key"},
             )

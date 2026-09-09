@@ -157,7 +157,7 @@ class TestStore(unittest.TestCase):
         query_urls = [cached_urls[i * 10] for i in range(num_query)]
 
         cached_ids = [store._stable_id(url) for url in cached_urls]
-        query_ids = [store._stable_id(url) for url in query_urls]
+        [store._stable_id(url) for url in query_urls]
 
         from datetime import datetime, timezone
         fresh_ts = datetime.now(timezone.utc).isoformat()

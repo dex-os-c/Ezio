@@ -555,7 +555,7 @@ class TestBuilder(unittest.TestCase):
         import uuid
         from unittest.mock import MagicMock
         from graph.builder import _link_cross_page_entities
-        from graph.model import EDGE_TYPES, NODE_TYPES
+        from graph.model import NODE_TYPES
 
         num_pages = 500
         num_entities = 1000
@@ -593,7 +593,7 @@ class TestBuilder(unittest.TestCase):
                 mock_entities.append(e)
 
         start_time = time.perf_counter()
-        result = _link_cross_page_entities(G, mock_entities, None)
+        _link_cross_page_entities(G, mock_entities, None)
         elapsed_time = time.perf_counter() - start_time
 
         self.assertLess(elapsed_time, 2.0,
@@ -998,7 +998,7 @@ class TestVisualize(unittest.TestCase):
             import graph.visualize as viz_mod
             importlib.reload(viz_mod)
 
-            result = viz_mod.build_pyvis_network(self.graph)
+            viz_mod.build_pyvis_network(self.graph)
 
         # The Network was instantiated
         mock_network_class.assert_called_once()

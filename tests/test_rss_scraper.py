@@ -7,7 +7,6 @@ from __future__ import annotations
 import json
 import time
 from datetime import datetime, timedelta, timezone
-from pathlib import Path
 from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest

@@ -186,7 +186,7 @@ class TestLinkExtraction:
 
     def test_resolves_relative_links(self):
         """Relative /path should become absolute when base_url is provided."""
-        html = f'<a href="/path/page">link</a>'
+        html = '<a href="/path/page">link</a>'
         from crawler.utils import extract_onion_links
         links = extract_onion_links(
             html, base_url=f"http://{_V3_VALID}/"
@@ -761,7 +761,7 @@ class TestErrorHandling:
         good_url = f"http://{_V3_VALID}/"
         bad_url = f"http://{_V2_VALID}/"
         good_body = (
-            f"<html><body>good content</body></html>"
+            "<html><body>good content</body></html>"
         ).encode()
 
         from crawler.spider import Spider
@@ -918,7 +918,6 @@ class TestCrawlResultShape:
         from crawler.spider import MAX_RETURN_CHARS, Spider
 
         spider = Spider([], "q", min_relevance=0.0)
-        long_text = "x" * 5000
         long_html = f"<html><body>{'x' * 5000}</body></html>"
         long_body = long_html.encode()
 

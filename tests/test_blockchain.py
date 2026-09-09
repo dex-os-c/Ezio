@@ -1,6 +1,5 @@
 """Tests for blockchain wallet lookup module."""
 import pytest
-import asyncio
 from unittest.mock import AsyncMock, patch
 from sources.blockchain import detect_wallet_type, lookup_wallet, BITCOIN_ADDRESS, ETHEREUM_ADDRESS, MONERO_ADDRESS
 

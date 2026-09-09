@@ -8,7 +8,6 @@ graceful degradation, MAX_HASHES limit, and sources_used tracking.
 
 from __future__ import annotations
 
-import asyncio
 import os
 import time
 from unittest.mock import AsyncMock, MagicMock, patch
@@ -18,15 +17,9 @@ import pytest
 import sources.hash_reputation as hr
 from sources.hash_reputation import (
     _hash_cache,
-    _is_valid_hash,
-    _normalize_family,
     check_hash_reputation,
     enrich_hash_entities,
     query_hybrid_analysis,
-    query_malwarebazaar,
-    query_threatfox,
-    query_virustotal_hash,
-    HASH_TYPES,
     MAX_HASHES,
 )
 

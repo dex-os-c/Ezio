@@ -402,7 +402,7 @@ async def _measure_effective_rate(query_fn, module, interval_attr, monkeypatch,
     )
 
     interval = getattr(module, interval_attr)
-    concurrency = getattr(module, concurrency_attr)
+    getattr(module, concurrency_attr)
 
     start = time.perf_counter()
     await asyncio.gather(*[query_fn(i) for i in range(n_requests)])

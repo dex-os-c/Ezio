@@ -16,7 +16,6 @@ from __future__ import annotations
 
 import re
 
-import pytest
 
 from export.yara_export import (
     _safe_rule_name,

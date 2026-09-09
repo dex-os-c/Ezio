@@ -11,7 +11,6 @@ import tempfile
 import unittest
 import yaml
 from pathlib import Path
-from unittest.mock import AsyncMock, patch
 
 _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if _ROOT not in sys.path:

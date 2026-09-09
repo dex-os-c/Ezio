@@ -16,9 +16,8 @@ from unittest.mock import MagicMock, patch
 from sqlalchemy import select as sa_select
 
 from db.models import User, UserApiKey, Base
-from db.session import get_session_factory
 from utils.encryption import encrypt_api_key, decrypt_api_key
-from utils.user_keys import get_user_key, resolve_api_key
+from utils.user_keys import resolve_api_key
 
 
 @pytest.fixture

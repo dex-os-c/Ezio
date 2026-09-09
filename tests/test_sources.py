@@ -23,10 +23,9 @@ Run with:
 from __future__ import annotations
 
 import asyncio
-import hashlib
 import os
 from datetime import datetime, timezone
-from unittest.mock import AsyncMock, MagicMock, patch, call
+from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
 

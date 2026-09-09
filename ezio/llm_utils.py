@@ -17,7 +17,7 @@ from config import (
     LLAMA_CPP_BASE_URL,
     GROQ_API_KEY,
     DEFAULT_MODELS,
-    DEFAULT_MODEL,
+    DEFAULT_MODEL,  # noqa: F401 — re-exported, imported by ezio/llm.py
 )
 
 logger = logging.getLogger(__name__)

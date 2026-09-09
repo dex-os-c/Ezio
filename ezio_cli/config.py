@@ -28,7 +28,7 @@ DEFAULT_OUTPUT_DIR = CLI_HOME / "results"
 # duplicated here — the whole point of that module is one source of truth.
 from pacing import DEFAULT_PROFILE as DEFAULT_PACE  # noqa: E402
 from pacing import ENV_VAR as PACE_ENV_VAR  # noqa: E402
-from pacing import PROFILES as PACE_PROFILES  # noqa: E402
+from pacing import PROFILES as PACE_PROFILES  # noqa: E402,F401 — re-exported as cli_config.PACE_PROFILES
 from pacing import normalize_profile as normalize_pace  # noqa: E402
 
 ENRICHMENT_KEYS = [

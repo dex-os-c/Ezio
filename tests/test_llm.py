@@ -1,5 +1,4 @@
 """Tests for LLM utility functions."""
-import pytest
 import sys
 import os
 

@@ -5,6 +5,7 @@
 <h1 align="center">Ezio</h1>
 
 <p align="center">
+  <a href="https://github.com/dex-os-c/Ezio/actions/workflows/ci.yml"><img src="https://github.com/dex-os-c/Ezio/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT"></a>
   <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.10%2B-blue.svg" alt="Python 3.10+"></a>
   <a href="docker-compose.yml"><img src="https://img.shields.io/badge/Docker-Compose-blue.svg" alt="Docker Compose"></a>

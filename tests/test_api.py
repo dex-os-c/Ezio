@@ -40,7 +40,6 @@ def _make_client():
     from api.main import app  # noqa: PLC0415
     from api.auth import CurrentUser, get_current_user, require_password_not_reset_pending
     from db.models import User
-    from unittest.mock import MagicMock
 
     mock_user = User(
         id=1,
@@ -520,7 +519,6 @@ class TestGraphConfidenceFilter(unittest.TestCase):
     @patch("graph.export.summary_stats", return_value={})
     def test_graph_confidence_filter(self, mock_summary, mock_to_json, mock_build_cached, mock_build, mock_get_inv, mock_session):
         from unittest.mock import MagicMock
-        from datetime import datetime, timezone
 
         mock_inv = MagicMock()
         mock_inv.id = 1

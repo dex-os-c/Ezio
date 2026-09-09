@@ -7,7 +7,7 @@ Verifies that pagination is pushed to SQL rather than Python list slicing.
 import os
 import sys
 import unittest
-from unittest.mock import MagicMock, patch
+from unittest.mock import MagicMock
 from typing import get_type_hints
 
 _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -37,7 +37,7 @@ class TestPagination(unittest.TestCase):
         from api.routes.investigations import get_investigation_entities
         import inspect
 
-        sig = inspect.signature(get_investigation_entities)
+        inspect.signature(get_investigation_entities)
         self.assertEqual(get_type_hints(get_investigation_entities)["return"], dict)
 
     def test_list_entities_endpoint_signature(self):
@@ -59,7 +59,7 @@ class TestPagination(unittest.TestCase):
         from api.routes.entities import list_entities
         import inspect
 
-        sig = inspect.signature(list_entities)
+        inspect.signature(list_entities)
         self.assertEqual(get_type_hints(list_entities)["return"], dict)
 
     def test_limit_validation_rejects_over_100(self):

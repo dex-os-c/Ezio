@@ -424,7 +424,7 @@ class TestEntityRelationship:
         assert rel.source_page.url == page.url
 
     def test_cascade_delete_with_entity(self, session):
-        from db.models import Entity, EntityRelationship
+        from db.models import EntityRelationship
 
         e1, e2, page = self._make_entities(session, "cas01")
         rel = EntityRelationship(

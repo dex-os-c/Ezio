@@ -29,7 +29,6 @@ from __future__ import annotations
 
 import ast
 import asyncio
-import warnings
 from pathlib import Path
 from urllib.parse import unquote
 
@@ -37,7 +36,6 @@ import pytest
 
 from sources.proxy_client import (
     MAX_RESPONSE_BYTES,
-    SCRAPINGANT_BASE_URL,
     SCRAPINGANT_PROXY_HOST,
     SCRAPINGANT_PROXY_HTTPS_PORT,
     SCRAPINGANT_PROXY_PORT,

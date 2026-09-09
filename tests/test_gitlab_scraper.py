@@ -24,7 +24,6 @@ import asyncio
 import base64
 from unittest.mock import AsyncMock, MagicMock, patch
 
-import pytest
 
 from sources.gitlab_scraper import (
     MAX_FILE_SIZE,

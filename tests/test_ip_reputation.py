@@ -7,8 +7,6 @@ confidence calculation, cache TTL, private IP filtering, and concurrency.
 
 from __future__ import annotations
 
-import asyncio
-import json
 import os
 import time
 from unittest.mock import AsyncMock, MagicMock, patch

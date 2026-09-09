@@ -6,7 +6,6 @@ from __future__ import annotations
 import asyncio
 import re
 
-import pytest
 from aioresponses import aioresponses
 
 from sources import enrichment as enr

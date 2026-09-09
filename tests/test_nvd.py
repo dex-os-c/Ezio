@@ -4,11 +4,9 @@ from __future__ import annotations
 
 import re
 
-import pytest
 from aioresponses import aioresponses
 
 from sources import nvd
-from tests.conftest import make_results, FakeEntity
 
 _NVD_RE = re.compile(r"https://services\.nvd\.nist\.gov/rest/json/cves/2\.0.*")
 _CPE_RE = re.compile(r"https://services\.nvd\.nist\.gov/rest/json/cpes/2\.0.*")
