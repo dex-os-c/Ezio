@@ -30,6 +30,8 @@ dependencies = [
     "aiohttp==3.13.5",
     "aiohttp-socks==0.11.0",
     "alembic==1.18.4",
+    "psycopg2-binary==2.9.10",
+    "asyncpg==0.30.0",
     "apscheduler==3.11.2",
     "pillow==12.2.0",
     "sqlalchemy[asyncio]==2.0.49",
