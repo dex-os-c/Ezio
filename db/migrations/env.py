@@ -37,17 +37,30 @@ target_metadata = Base.metadata
 
 
 def _ensure_version_column_capacity(connection) -> None:
-    """Keep legacy PostgreSQL Alembic tables able to store current revision IDs.
+    """Keep PostgreSQL's Alembic bookkeeping table able to store current revision IDs.
 
-    The initial Alembic table used VARCHAR(32), but later revision identifiers
-    are longer than 32 characters.  Widen the metadata column before Alembic
-    writes the next revision; this touches only migration bookkeeping, never
-    application data.
+    The default Alembic version table uses VARCHAR(32), but some of this
+    project's revision identifiers are longer than 32 characters. This
+    handles both cases:
+      - Legacy table already exists with the narrow column -> widen it.
+      - Fresh database, table doesn't exist yet -> create it upfront with
+        the wide column, so Alembic's own bootstrap (which would otherwise
+        create it with the narrow default) finds it already there.
+    Either way this touches only migration bookkeeping, never application
+    data.
     """
     if connection.dialect.name != "postgresql":
         return
     inspector = inspect(connection)
     if "alembic_version" not in inspector.get_table_names():
+        connection.execute(
+            text(
+                "CREATE TABLE alembic_version ("
+                "    version_num VARCHAR(255) NOT NULL, "
+                "    CONSTRAINT alembic_version_pkc PRIMARY KEY (version_num)"
+                ")"
+            )
+        )
         return
     version_column = next(
         (c for c in inspector.get_columns("alembic_version") if c["name"] == "version_num"),
