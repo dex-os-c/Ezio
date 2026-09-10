@@ -25,11 +25,12 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
 
 # Copy project metadata and source for installation from the authoritative
 # dependency manifest in pyproject.toml.
-COPY pyproject.toml README.md ./
+COPY pyproject.toml README.md alembic.ini ./
 COPY api/ api/
 COPY analysis/ analysis/
 COPY auth/ auth/
 COPY crawler/ crawler/
+COPY data/ data/
 COPY db/ db/
 COPY export/ export/
 COPY extractor/ extractor/
@@ -37,10 +38,12 @@ COPY fingerprint/ fingerprint/
 COPY graph/ graph/
 COPY i18n/ i18n/
 COPY monitor/ monitor/
+COPY pacing/ pacing/
 COPY scraper/ scraper/
 COPY search/ search/
 COPY sources/ sources/
 COPY utils/ utils/
+COPY vector/ vector/
 COPY ezio/ ezio/
 COPY ezio_cli/ ezio_cli/
 COPY config.py .
