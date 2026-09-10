@@ -27,6 +27,7 @@ dependencies = [
     "textual==8.2.7",
     "click==8.3.2",
     "fastapi==0.136.0",
+    "uvicorn[standard]==0.34.3",
     "aiohttp==3.13.5",
     "aiohttp-socks==0.11.0",
     "alembic==1.18.4",
