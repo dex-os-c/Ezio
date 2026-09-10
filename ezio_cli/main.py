@@ -79,7 +79,7 @@ app.command("actor", help="Show or annotate a single actor profile.")(actors.run
 # Bonus / last-priority: simulated demo only, no live scanning.
 app.command(
     "misconfig-scan",
-    help="[bonus, simulated] Preview a misconfiguration-scan report (no live requests).",
+    help="[bonus] Passive misconfiguration scan (headers, exposed paths, admin panels, TLS) for an authorized target.",
 )(misconfig_scanner.run)
 
 

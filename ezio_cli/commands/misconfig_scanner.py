@@ -1,86 +1,31 @@
 """
 cli/commands/misconfig_scanner.py — `ezio misconfig-scan` command.
 
-BONUS / LAST-PRIORITY FEATURE.
+Runs a real, passive misconfiguration scan against a target you specify:
+missing security headers, exposed sensitive paths (.git, .env, backups),
+reachable default admin panels, and TLS certificate health. Every check
+is a normal HTTP GET/HEAD request — no exploitation, no brute forcing.
 
-This is deliberately a *simulated* module: it renders a canned,
-pasted-in scanner banner and a static findings table instead of doing
-any live scanning. It exists to preview what a future misconfiguration
-scanner could surface (open panels, exposed .git/.env, weak headers,
-default creds) without spending build time on a real network scanner —
-that work is explicitly out of scope for this pass. The rest of the
-pipeline (investigate/enrich/export/actors) is the real, working core;
-this command is a mockup layered on top of it.
+Only scan systems you are authorized to test — see docs/USAGE_POLICY.md,
+which governs this command exactly as it governs the rest of Ezio.
 
 Command
 -------
-ezio misconfig-scan [TARGET] [--json]
-    Prints a simulated scan banner + a static table of example
-    findings. No network requests are made.
+ezio misconfig-scan TARGET [--json] [--timeout SECONDS]
 """
 
 from __future__ import annotations
 
+import asyncio
 import json
-from datetime import datetime, timezone
-from typing import Optional
 
 import typer
 from rich.console import Console
-from rich.panel import Panel
 from rich.table import Table
 
+from sources.misconfig_scan import scan_target as _scan_target
+
 console = Console()
-
-# ---------------------------------------------------------------------------
-# Pasted / static banner text — this is NOT live tool output. It's a fixed
-# string meant to look like a scanner's startup banner for demo purposes.
-# ---------------------------------------------------------------------------
-SIMULATED_BANNER = r"""
-[color(141)] _______ ___ ___ _______
-|   _   |_  |  _  |     |
-|.  1___|_  |_   _|  |  |
-|.  __) |_______|_____|
-|:  |    misconfig-scanner (simulated) v0.1
-|::.|    eagle-vision sweep — demo mode, no live requests
-'---'
-[/]
-""".strip("\n")
-
-# Static, hand-authored example findings. Numbers/paths are illustrative,
-# not derived from any real scan of the target.
-SIMULATED_FINDINGS = [
-    {
-        "severity": "high",
-        "check": "exposed .git directory",
-        "path": "/.git/config",
-        "note": "source tree potentially clonable from the public web root",
-    },
-    {
-        "severity": "high",
-        "check": "exposed .env file",
-        "path": "/.env",
-        "note": "would leak API keys / DB credentials if publicly served",
-    },
-    {
-        "severity": "medium",
-        "check": "missing security headers",
-        "path": "/",
-        "note": "no Content-Security-Policy or X-Frame-Options observed",
-    },
-    {
-        "severity": "medium",
-        "check": "default admin panel reachable",
-        "path": "/admin",
-        "note": "login page reachable without IP allow-listing",
-    },
-    {
-        "severity": "low",
-        "check": "verbose server banner",
-        "path": "/",
-        "note": "server header discloses stack/version details",
-    },
-]
 
 _SEVERITY_STYLE = {
     "high": "bold red",
@@ -90,49 +35,64 @@ _SEVERITY_STYLE = {
 
 
 def run(
-    target: Optional[str] = typer.Argument(
-        None,
-        help="Target label for the simulated report (display only — not scanned).",
+    target: str = typer.Argument(
+        ...,
+        help="Host or URL to scan (e.g. example.com or https://example.com). "
+        "Only scan targets you are authorized to test.",
+    ),
+    timeout: float = typer.Option(
+        10.0,
+        "--timeout",
+        help="Per-request timeout in seconds.",
     ),
     as_json: bool = typer.Option(
         False,
         "--json",
-        help="Print the simulated findings as JSON instead of a table.",
+        help="Print findings as JSON instead of a table.",
     ),
 ) -> None:
-    """Render a simulated misconfiguration-scan report.
+    """Run a real passive misconfiguration scan against TARGET.
 
-    This is a bonus, lowest-priority module: it does not open sockets,
-    resolve DNS, or touch the target in any way. It exists purely to
-    demo the intended UX for a future real scanner.
+    Checks: missing security headers, exposed sensitive paths (.git/.env/
+    backups), reachable default admin panels, TLS certificate health.
+    All checks are passive HTTP requests — nothing here exploits, brute
+    forces, or guesses credentials.
     """
-    label = target or "example-target.local"
-    generated_at = datetime.now(timezone.utc).isoformat()
+    result = asyncio.run(_scan_target(target, timeout=timeout))
 
     if as_json:
-        payload = {
-            "target": label,
-            "simulated": True,
-            "generated_at": generated_at,
-            "findings": SIMULATED_FINDINGS,
-        }
-        console.print(json.dumps(payload, indent=2))
+        console.print(json.dumps(result, indent=2))
         return
 
-    console.print(Panel(SIMULATED_BANNER, border_style="color(141)", expand=False))
     console.print(
-        f"[dim]target:[/dim] {label}    "
-        f"[dim]mode:[/dim] [bold yellow]SIMULATED — no live requests made[/bold yellow]"
+        f"[dim]target:[/dim] {result['target']}    "
+        f"[dim]scanned:[/dim] {result['scanned_at']}"
     )
-    console.print()
+    console.print(
+        "[dim italic]Passive checks only (headers, exposed paths, admin panels, TLS). "
+        "Scan only systems you're authorized to test.[/dim italic]\n"
+    )
 
-    table = Table(title="misconfig-scan (simulated) findings", show_lines=False)
+    for error in result["errors"]:
+        console.print(f"[yellow]⚠ {error}[/yellow]")
+
+    findings = result["findings"]
+    if not findings:
+        console.print("[green]No misconfigurations found by these checks.[/green]")
+        console.print(
+            "[dim]Note: absence of findings here is not a clean bill of health — "
+            "this covers a fixed, passive checklist, not a full assessment.[/dim]"
+        )
+        return
+
+    table = Table(title="misconfig-scan findings")
     table.add_column("Severity", no_wrap=True)
     table.add_column("Check")
     table.add_column("Path")
     table.add_column("Note")
 
-    for finding in SIMULATED_FINDINGS:
+    severity_order = {"high": 0, "medium": 1, "low": 2}
+    for finding in sorted(findings, key=lambda f: severity_order.get(f["severity"], 9)):
         style = _SEVERITY_STYLE.get(finding["severity"], "white")
         table.add_row(
             f"[{style}]{finding['severity'].upper()}[/{style}]",
@@ -142,8 +102,3 @@ def run(
         )
 
     console.print(table)
-    console.print(
-        "\n[dim italic]This output is pasted demo data, not a live scan. "
-        "misconfig-scan is a bonus module — the real pipeline is "
-        "investigate / enrich / export / actors.[/dim italic]"
-    )

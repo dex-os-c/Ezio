@@ -150,7 +150,7 @@ pip install "ezio[nlp]"
 | `ezio configure keys` | Configure enrichment API keys |
 | `ezio configure tor` | Override the Tor proxy host and port |
 | `ezio version` | Print the installed version |
-| `ezio misconfig-scan [TARGET] --json` | **Bonus, simulated** — renders a demo misconfiguration report (pasted example findings, no live requests). Lowest-priority module, kept separate from the real pipeline above. |
+| `ezio misconfig-scan TARGET --json` | **Bonus, real** — passive scan (missing security headers, exposed `.git`/`.env`/backups, reachable admin panels, TLS cert health) for a target you're authorized to test. Kept separate from the real dark-web pipeline above — it's a standalone add-on, not part of `investigate`. |
 
 Optional clearnet requests can use [ScrapingAnt](https://scrapingant.com/?ref=mzliyzh) with `--use-scraping-api` or `--use-proxies`; Tor, `.onion`, GitHub, and GitLab traffic are unaffected.
 
