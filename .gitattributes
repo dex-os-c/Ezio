@@ -1,0 +1,17 @@
+# Shell scripts get baked into Linux containers and are exec'd directly by
+# their shebang line. If Windows git checks these out with CRLF endings,
+# the shebang becomes "#!/bin/bash\r" and the kernel looks for an
+# interpreter literally named "/bin/bash\r", failing with:
+#   exec /app/docker/docker-entrypoint.sh: no such file or directory
+# Force LF regardless of the platform doing the checkout.
+*.sh text eol=lf
+
+# Dockerfiles and compose files are also parsed by Linux tooling; keep them
+# LF too so builds are reproducible across OSes.
+Dockerfile* text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+
+# Let git auto-detect text vs binary for everything else, but normalize
+# line endings to LF in the repository regardless of checkout platform.
+* text=auto eol=lf
